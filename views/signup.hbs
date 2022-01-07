@@ -3,18 +3,40 @@
     <h1 class="card-title text-center mt-3">Sign Up</h1>
     <div class="card-body mx-5">
       <form action="/users/signup" method="POST">
-
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input
+            name="name"
+            type="text"
+            class="form-control"
+            id="name"
+            required
+          />
+        </div>
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
-          <input type="text" class="form-control" id="email" required />
+          <input
+            name="email"
+            type="text"
+            class="form-control"
+            id="email"
+            required
+          />
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" required />
+          <input
+            name="password"
+            type="password"
+            class="form-control"
+            id="password"
+            required
+          />
         </div>
         <div class="mb-3">
           <label for="confirm-password" class="form-label">Confirm Password</label>
           <input
+            name="confirmPassword"
             type="password"
             class="form-control"
             id="confirm-password"
