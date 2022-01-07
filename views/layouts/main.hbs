@@ -3,6 +3,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/6543/6543247.png"
+    />
     <title>廣志の私帳</title>
     {{! Bootstrap v5.1}}
     <link
@@ -18,8 +22,28 @@
       integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/{{style}}.css" />
   </head>
   <body>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid mx-3">
+        <a class="navbar-brand" href="/">
+          <i class="fas fa-receipt"></i><span class="ms-2"></span>
+          廣志の私帳
+        </a>
+
+        {{#if user}}
+          <a href="#"><button
+              type="button"
+              class="btn nav-btn"
+            >Logout</button></a>
+        {{else}}
+          <a href="#"><button type="button" class="btn nav-btn">Sign up</button></a>
+        {{/if}}
+      </div>
+    </nav>
+
     {{{body}}}
 
     {{! Bootstrap v5.1}}

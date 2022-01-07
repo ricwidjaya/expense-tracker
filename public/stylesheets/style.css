@@ -1,0 +1,22 @@
+html,
+body {
+  background-color: #f4f5f7;
+}
+
+nav {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+
+.btn {
+  background-color: #fc4445;
+  color: #fff;
+  border: none;
+}
+
+.fa-receipt {
+  color: #fc4445;
+}
