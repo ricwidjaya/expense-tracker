@@ -1,8 +1,8 @@
 const express = require("express")
 const router = express.Router()
 
-router.get("/", (req, res) => {
-  res.render("index")
-})
+const recordController = require("../../controllers/recordController")
+
+router.get("/", recordController.getRecords)
 
 module.exports = router
