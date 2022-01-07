@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 const PORT = process.env.PORT
 const app = express()
+require("./config/mongoose")
 const routes = require("./routes")
 const exphbs = require("express-handlebars")
 
@@ -16,5 +17,5 @@ app.use(express.static("public"))
 app.use(routes)
 
 app.listen(PORT, () => {
-  console.log(`App server host on ${PORT}`)
+  console.log(`App server hosts on ${PORT}`)
 })

@@ -2,8 +2,7 @@
   <div class="card">
     <h1 class="card-title text-center mt-3">Login</h1>
     <div class="card-body mx-5">
-      <form action="#" method="POST">
-
+      <form action="/users/login" method="POST">
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
           <input type="text" class="form-control" id="email" required />
@@ -14,11 +13,11 @@
         </div>
         <div class="d-grid gap-2">
           <button type="submit" class="btn btn-primary">Login</button>
-          <a href="#" class="btn btn-fb">
+          <a href="/auth/facebook" class="btn btn-fb">
             <i class="fab fa-facebook"></i><span class="ms-2"></span>
             Login with Facebook
           </a>
-          <a href="#" class="btn btn-google">
+          <a href="/auth/google" class="btn btn-google">
             <i class="fab fa-google"></i><span class="ms-2"></span>
             Login with Google
           </a>
