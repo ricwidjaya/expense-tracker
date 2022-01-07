@@ -1,0 +1,27 @@
+{
+  "name": "expense-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "seed": "node /models/seeders/userSeeder.js; node /models/seeders/categorySeeder.js; node /models/seeders/recordSeeder.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricwidjaya/expense-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ricwidjaya/expense-tracker/issues"
+  },
+  "homepage": "https://github.com/ricwidjaya/expense-tracker#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2"
+  }
+}
