@@ -7,7 +7,7 @@ const app = express()
 require("./config/mongoose")
 const routes = require("./routes")
 const exphbs = require("express-handlebars")
-const middleware = require("./middleware/middleware")
+const { locals } = require("./middleware/middleware")
 const session = require("express-session")
 const flash = require("connect-flash")
 
@@ -16,7 +16,7 @@ app.engine("hbs", exphbs.engine({ extname: ".hbs" }))
 app.set("view engine", "hbs")
 app.use(express.static("public"))
 
-// Http & sessions
+// Http & sessions & passport
 app.use(express.urlencoded({ extended: true }))
 app.use(
   session({
@@ -26,7 +26,8 @@ app.use(
   })
 )
 app.use(flash())
-app.use(middleware.setFlash)
+require("./config/passport")(app)
+app.use(locals)
 
 app.use(routes)
 

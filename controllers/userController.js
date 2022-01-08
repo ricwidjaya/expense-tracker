@@ -3,9 +3,15 @@ const User = require("../models/user")
 
 module.exports = {
   getLoginPage: (req, res) => {
+    if (req.user) return res.redirect("/")
     return res.render("login", {
       style: "account"
     })
+  },
+
+  // Log user in
+  login: (req, res) => {
+    return res.redirect("/")
   },
 
   getSignUpPage: (req, res) => {
@@ -33,5 +39,12 @@ module.exports = {
         })
       }
     })
+  },
+
+  // User logout
+  logout: (req, res) => {
+    req.logout()
+    req.flash("success_messages", "You've been logged out.")
+    return res.redirect("/users/login")
   }
 }
