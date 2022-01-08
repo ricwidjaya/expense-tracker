@@ -1,0 +1,95 @@
+<div class="container mt-5 mx-auto">
+  <form action="/record" method="POST">
+    <h1 class="text-center">請輸入你的支出</h1>
+    <small>必填欄位<span class="asterisk mx-2">*</span></small>
+    <div class="row g-3 align-items-center">
+
+      {{! Name }}
+      <div class="row g-3 align-items-center justify-content-evenly mb-3">
+        <div class="col-2">
+          <label for="name" class="col-form-label-lg">名稱<span
+              class="asterisk mx-2"
+            >*</span>:</label>
+        </div>
+        <div class="col-8">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="form-control form-control-lg"
+            aria-describedby="nameHelpInline"
+            required
+          />
+        </div>
+      </div>
+
+      {{! Date }}
+      <div class="row g-3 align-items-center justify-content-evenly mb-3">
+        <div class="col-2">
+          <label for="date" class="col-form-label-lg">日期<span
+              class="asterisk mx-2"
+            >*</span>:</label>
+        </div>
+        <div class="col-8">
+          <input
+            type="date"
+            name="date"
+            id="date"
+            class="form-control form-control-lg"
+            aria-describedby="dateHelpInline"
+            required
+          />
+        </div>
+      </div>
+
+      {{! Category }}
+      <div class="row g-3 align-items-center justify-content-evenly mb-3">
+        <div class="col-2">
+          <label for="category" class="col-form-label-lg">類別<span
+              class="asterisk mx-2"
+            >*</span>:</label>
+        </div>
+        <div class="col-8">
+          <select
+            name="category"
+            id="category"
+            class="form-select form-select-lg mb-3"
+            aria-label=".form-select-lg example"
+            required
+          >
+            <option selected>請選擇類別</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+      </div>
+
+      {{! Amount }}
+      <div class="row g-3 align-items-center justify-content-evenly mb-3">
+        <div class="col-2">
+          <label for="amount" class="col-form-label-lg">金額<span
+              class="asterisk mx-2"
+            >*</span>:</label>
+        </div>
+        <div class="col-8">
+          <div class="input-group mb-3">
+            <span class="input-group-text">$</span>
+            <input
+              type="number"
+              min="1"
+              name="amount"
+              id="amount"
+              class="form-control form-control-lg"
+              aria-describedby="amountHelpInline"
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <div class="d-grid gap-2 mx-auto mt-5">
+        <button type="submit" class="btn">新增支出</button>
+      </div>
+    </div>
+  </form>
+</div>

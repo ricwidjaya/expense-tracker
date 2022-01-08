@@ -1,0 +1,29 @@
+.container {
+  max-width: 760px;
+  padding: 35px 30px;
+  border-radius: 25px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+small {
+  color: rgb(133, 133, 133);
+}
+
+.asterisk {
+  color: #fc4445;
+}
+
+.form-control {
+  border-radius: 10px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  box-shadow: none;
+  border-color: #fc4445;
+}
+
+.d-grid {
+  max-width: 380px;
+}
