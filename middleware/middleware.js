@@ -3,7 +3,6 @@ module.exports = {
     res.locals.success_messages = req.flash("success_messages")
     res.locals.error_messages = req.flash("error_messages")
     res.locals.user = req.user
-    console.log(res.locals)
     return next()
   },
 
