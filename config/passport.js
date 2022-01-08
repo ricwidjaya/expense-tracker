@@ -1,6 +1,7 @@
 const passport = require("passport")
 const LocalStrategy = require("passport-local").Strategy
 const FacebookStrategy = require("passport-facebook").Strategy
+const GoogleStrategy = require("passport-google-oauth20")
 const User = require("../models/user")
 const bcrypt = require("bcryptjs")
 
@@ -62,6 +63,45 @@ module.exports = (app) => {
       (req, accessToken, refreshToken, profile, done) => {
         const { name, email } = profile._json
         const picture = profile._json.picture.data.url
+
+        User.findOne({ email }).then((user) => {
+          // User found
+          if (user)
+            return done(
+              null,
+              user,
+              req.flash("success_messages", "Login successful.")
+            )
+
+          // New user
+          const randomPassword = Math.random().toString(36).slice(-8)
+          User.create({
+            name,
+            email,
+            password: bcrypt.hashSync(randomPassword, bcrypt.genSaltSync(10))
+          }).then((user) => {
+            return done(
+              null,
+              user,
+              req.flash("success_messages", "Login successful.")
+            )
+          })
+        })
+      }
+    )
+  )
+
+  // Google Strategy
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: process.env.GOOGLE_CALLBACK_URL,
+        passReqToCallback: true
+      },
+      (req, accessToken, refreshToken, profile, done) => {
+        const { name, email, picture } = profile._json
 
         User.findOne({ email }).then((user) => {
           // User found
