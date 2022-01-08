@@ -20,3 +20,15 @@ nav {
 .fa-receipt {
   color: #fc4445;
 }
+
+.alert {
+  min-width: 540px;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.alert-icon {
+  margin-right: 5%;
+}
