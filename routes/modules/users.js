@@ -8,7 +8,7 @@ router.get("/login", userController.getLoginPage)
 router.post(
   "/login",
   passport.authenticate("local", {
-    failureRedirect: "/login",
+    failureRedirect: "/users/login",
     failureFlash: true
   }),
   userController.login

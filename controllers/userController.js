@@ -15,6 +15,7 @@ module.exports = {
   },
 
   getSignUpPage: (req, res) => {
+    if (req.user) return res.redirect("/")
     return res.render("signup", {
       style: "account"
     })
