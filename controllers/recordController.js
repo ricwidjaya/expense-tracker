@@ -1,7 +1,12 @@
+
+
 module.exports = {
   // Render index page
   getRecords: (req, res) => {
-    return res.render("index")
+
+    return res.render("index", {
+      style: "index"
+    })
   },
 
   // New record page
@@ -12,7 +17,5 @@ module.exports = {
   },
 
   // Add new record
-  postRecord: (req, res) => {
-
-  }
+  postRecord: (req, res) => {}
 }

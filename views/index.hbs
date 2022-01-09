@@ -1,2 +1,87 @@
-<h1>Hello It's {{user.name}} App</h1>
-<a href="/record/new"><button type="button" class="btn">New</button></a>
+<div class="container">
+  <select
+    class="form-select form-select-lg mt-5 mb-3"
+    aria-label=".form-select-lg example"
+  >
+    <option selected>類別</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+
+  {{!Total amount}}
+  <div class="total-amount d-flex justify-content-center">
+    <h3>總金額：</h3>
+    <div class="amount">
+      $5678 元
+    </div>
+  </div>
+
+  {{! AJAX list panel }}
+  <div class="list-container">
+    <ul class="list-group">
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center mb-3"
+      >
+
+        <div class="d-flex align-items-center list-head">
+          <i class="fas fa-home icon" style="user-select: auto;"></i>
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">Name</div>
+            Date
+          </div>
+        </div>
+        <div class="balance">
+          $300 元
+        </div>
+        <div class="icon">
+          <a href="#" class="me-3"><i class="fas fa-edit"></i></a>
+          <a href="#"><i class="fas fa-trash-alt"></i></a>
+        </div>
+      </li>
+
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center mb-3"
+      >
+
+        <div class="d-flex align-items-center list-head">
+          <i class="fas fa-home icon" style="user-select: auto;"></i>
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">Name</div>
+            Date
+          </div>
+        </div>
+        <div class="balance">
+          $300 元
+        </div>
+        <div class="icon">
+          <a href="#" class="me-3"><i class="fas fa-edit"></i></a>
+          <a href="#"><i class="fas fa-trash-alt"></i></a>
+        </div>
+      </li>
+      <li
+        class="list-group-item d-flex justify-content-between align-items-center mb-3"
+      >
+
+        <div class="d-flex align-items-center list-head">
+          <i class="fas fa-home icon" style="user-select: auto;"></i>
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">Name</div>
+            Date
+          </div>
+        </div>
+        <div class="balance">
+          $300 元
+        </div>
+        <div class="icon">
+          <a href="#" class="me-3"><i class="fas fa-edit"></i></a>
+          <a href="#"><i class="fas fa-trash-alt"></i></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="d-grid gap-2 col-6 mx-auto">
+    <a href="/record/new" class="btn">New</a>
+  </div>
+</div>

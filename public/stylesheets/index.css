@@ -1,0 +1,41 @@
+.container {
+  max-width: 720px;
+}
+
+.amount {
+  font-size: 60px;
+  color: #fc4445;
+}
+
+.total-amount {
+  gap: 2rem;
+}
+
+/* Scrollable list view */
+.list-container {
+  height: 50vh;
+  overflow-y: scroll;
+}
+
+.list-group {
+  border-radius: 25px;
+}
+
+.list-group-item {
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 2rem;
+}
+
+.list-head {
+  gap: 1rem;
+}
+
+.balance {
+  font-size: 18px;
+}
+
+.icon {
+  font-size: x-large;
+  color: #4056a1;
+}
