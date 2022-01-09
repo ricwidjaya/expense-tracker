@@ -46,8 +46,26 @@ module.exports = {
   // Add new record
   postRecord: (req, res) => {
     const { name, date, amount, receipt, category } = req.body
-    console.log(name, date, amount, receipt, category)
+
+    Category.findOne({ name: category })
+      .lean()
+      .then((category) => {
+        console.log(category)
+        Record.create({
+          name,
+          date,
+          amount,
+          userId: req.user._id,
+          categoryId: category._id
+        }).then(() => {
+          return res.redirect("/")
+        })
+      })
   },
 
   // Edit record
+  putRecord: (req, res) => {
+    const { name, date, amount, receipt, category } = req.body
+    console.log(name, date, amount, receipt, category)
+  }
 }
