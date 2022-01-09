@@ -7,7 +7,7 @@ router.get("/", recordController.getRecords)
 router.get("/record/new", recordController.record)
 router.post("/record", recordController.postRecord)
 router.get("/record/:id/edit", recordController.record)
-router.put("/record/:id")
-router.delete("/record/:id")
+router.put("/record/:id", recordController.putRecord)
+router.delete("/record/:id", recordController.deleteRecord)
 
 module.exports = router

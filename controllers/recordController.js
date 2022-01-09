@@ -67,5 +67,16 @@ module.exports = {
   putRecord: (req, res) => {
     const { name, date, amount, receipt, category } = req.body
     console.log(name, date, amount, receipt, category)
+  },
+
+  // Delete record
+  deleteRecord: (req, res) => {
+    const _id = req.params.id
+    const userId = req.user._id
+    Record.findOneAndDelete({ _id, userId })
+      .then((record) => {
+        return res.redirect("/")
+      })
+      .catch((error) => console.log(error))
   }
 }
