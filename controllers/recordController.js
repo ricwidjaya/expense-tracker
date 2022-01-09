@@ -22,9 +22,16 @@ module.exports = {
   },
 
   // New record page
-  newRecord: (req, res) => {
-    return res.render("new", {
-      style: "record"
+  record: (req, res) => {
+    const id = req.params.id
+    const queries = [Record.findById(id).lean(), Category.find().lean()]
+
+    return Promise.all(queries).then(([record, categories]) => {
+      return res.render("new", {
+        record,
+        categories,
+        style: "record"
+      })
     })
   },
 

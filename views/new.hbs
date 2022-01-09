@@ -16,6 +16,7 @@
             type="text"
             name="name"
             id="name"
+            value="{{record.name}}"
             class="form-control form-control-lg"
             aria-describedby="nameHelpInline"
             required
@@ -35,6 +36,7 @@
             type="date"
             name="date"
             id="date"
+            value="{{getISODate record.date}}"
             class="form-control form-control-lg"
             aria-describedby="dateHelpInline"
             required
@@ -57,10 +59,19 @@
             aria-label=".form-select-lg example"
             required
           >
-            <option selected>請選擇類別</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option {{#if record}} {{else}} selected {{/if}}>請選擇類別</option>
+            <option value="" disabled>===支出===</option>
+            {{#each categories}}
+              {{#if this.isExpense}}
+                <option {{#compareObjectID this ../record}} selected {{/compareObjectID}} value="{{this.name}}">{{this.name}}</option>
+              {{/if}}
+            {{/each}}
+            <option value="" disabled>===收入===</option>
+            {{#each categories}}
+              {{#if this.isExpense}}{{else}}
+                <option {{#compareObjectID this ../record}} selected {{/compareObjectID}} value="{{this.name}}">{{this.name}}</option>
+              {{/if}}
+            {{/each}}
           </select>
         </div>
       </div>
@@ -80,6 +91,7 @@
               min="1"
               name="amount"
               id="amount"
+              value="{{record.amount}}"
               class="form-control form-control-lg"
               aria-describedby="amountHelpInline"
               required

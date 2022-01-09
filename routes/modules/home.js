@@ -4,9 +4,9 @@ const router = express.Router()
 const recordController = require("../../controllers/recordController")
 
 router.get("/", recordController.getRecords)
-router.get("/record/new", recordController.newRecord)
+router.get("/record/new", recordController.record)
 router.post("/record")
-router.get("/record/:id/edit")
+router.get("/record/:id/edit", recordController.record)
 router.put("/record/:id")
 router.delete("/record/:id")
 
