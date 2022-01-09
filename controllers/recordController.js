@@ -50,7 +50,6 @@ module.exports = {
     Category.findOne({ name: category })
       .lean()
       .then((category) => {
-        console.log(category)
         Record.create({
           name,
           date,
@@ -65,8 +64,25 @@ module.exports = {
 
   // Edit record
   putRecord: (req, res) => {
+    const _id = req.params.id
+    const userId = req.user._id
     const { name, date, amount, receipt, category } = req.body
-    console.log(name, date, amount, receipt, category)
+
+    Category.findOne({ name: category })
+      .lean()
+      .then((category) => {
+        Record.findOneAndUpdate(
+          { _id, userId },
+          {
+            name,
+            date,
+            amount,
+            categoryId: category._id
+          }
+        ).then(() => {
+          return res.redirect("/")
+        })
+      })
   },
 
   // Delete record
