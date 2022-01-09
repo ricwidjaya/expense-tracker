@@ -8,23 +8,28 @@ const Category = require("../category")
 const categories = [
   {
     name: "家居物業",
-    isExpense: true
+    isExpense: true,
+    icon: "fas fa-home"
   },
   {
     name: "交通出行",
-    isExpense: true
+    isExpense: true,
+    icon: "fas fa-shuttle-van"
   },
   {
     name: "休閒娛樂",
-    isExpense: true
+    isExpense: true,
+    icon: "fas fa-grin-beam"
   },
   {
     name: "餐飲食品",
-    isExpense: true
+    isExpense: true,
+    icon: "fas fa-utensils"
   },
   {
     name: "其他",
-    isExpense: true
+    isExpense: true,
+    icon: "fas fa-pen"
   }
 ]
 

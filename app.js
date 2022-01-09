@@ -12,7 +12,13 @@ const session = require("express-session")
 const flash = require("connect-flash")
 
 // View engine & static file config
-app.engine("hbs", exphbs.engine({ extname: ".hbs" }))
+app.engine(
+  "hbs",
+  exphbs.engine({
+    extname: ".hbs",
+    helpers: require("./config/handlebars-helpers")
+  })
+)
 app.set("view engine", "hbs")
 app.use(express.static("public"))
 

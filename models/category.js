@@ -10,6 +10,10 @@ const Category = new Schema({
     type: Boolean,
     default: false,
     required: true
+  },
+  icon: {
+    type: String,
+    default: "fas fa-pen"
   }
 })
 
