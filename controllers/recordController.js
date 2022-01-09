@@ -4,8 +4,9 @@ const Record = require("../models/record")
 module.exports = {
   // Render index page
   getRecords: (req, res) => {
+    const userId = req.user._id
     // Prepare all queries in an array
-    const queries = [Category.find().lean(), Record.find().lean()]
+    const queries = [Category.find().lean(), Record.find({ userId }).lean()]
 
     // Execute all promise at once
     return Promise.all(queries).then(([categories, records]) => {
@@ -16,7 +17,8 @@ module.exports = {
         categories,
         totalAmount,
         records,
-        style: "index"
+        style: "index",
+        script: "index"
       })
     })
   },
@@ -45,44 +47,36 @@ module.exports = {
 
   // Add new record
   postRecord: (req, res) => {
-    const { name, date, amount, receipt, category } = req.body
+    const { name, date, amount, receipt, categoryId } = req.body
 
-    Category.findOne({ name: category })
-      .lean()
-      .then((category) => {
-        Record.create({
-          name,
-          date,
-          amount,
-          userId: req.user._id,
-          categoryId: category._id
-        }).then(() => {
-          return res.redirect("/")
-        })
-      })
+    Record.create({
+      name,
+      date,
+      amount,
+      userId: req.user._id,
+      categoryId
+    }).then(() => {
+      return res.redirect("/")
+    })
   },
 
   // Edit record
   putRecord: (req, res) => {
     const _id = req.params.id
     const userId = req.user._id
-    const { name, date, amount, receipt, category } = req.body
+    const { name, date, amount, receipt, categoryId } = req.body
 
-    Category.findOne({ name: category })
-      .lean()
-      .then((category) => {
-        Record.findOneAndUpdate(
-          { _id, userId },
-          {
-            name,
-            date,
-            amount,
-            categoryId: category._id
-          }
-        ).then(() => {
-          return res.redirect("/")
-        })
-      })
+    Record.findOneAndUpdate(
+      { _id, userId },
+      {
+        name,
+        date,
+        amount,
+        categoryId
+      }
+    ).then(() => {
+      return res.redirect("/")
+    })
   },
 
   // Delete record

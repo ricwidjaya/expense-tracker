@@ -51,7 +51,7 @@
         </div>
         <div class="col-8">
           <select
-            name="category"
+            name="categoryId"
             id="category"
             class="form-select form-select-lg mb-3"
             aria-label=".form-select-lg example"
@@ -61,13 +61,13 @@
             <option value="" disabled>===支出===</option>
             {{#each categories}}
               {{#if this.isExpense}}
-                <option value="{{this.name}}">{{this.name}}</option>
+                <option value="{{this._id}}">{{this.name}}</option>
               {{/if}}
             {{/each}}
             <option value="" disabled>===收入===</option>
             {{#each categories}}
               {{#if this.isExpense}}{{else}}
-                <option value="{{this.name}}">{{this.name}}</option>
+                <option value="{{this._id}}">{{this.name}}</option>
               {{/if}}
             {{/each}}
           </select>
