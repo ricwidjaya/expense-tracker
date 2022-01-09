@@ -1,5 +1,5 @@
 <div class="container mt-5 mx-auto">
-  <form action="/record" method="POST">
+  <form action="/record/{{record._id}}?_method=PUT" method="POST">
     <h1 class="text-center">請輸入你的支出</h1>
     <small>必填欄位<span class="asterisk mx-2">*</span></small>
     <div class="row g-3 align-items-center">
@@ -16,6 +16,7 @@
             type="text"
             name="name"
             id="name"
+            value="{{record.name}}"
             class="form-control form-control-lg"
             aria-describedby="nameHelpInline"
             required
@@ -35,6 +36,7 @@
             type="date"
             name="date"
             id="date"
+            value="{{getISODate record.date}}"
             class="form-control form-control-lg"
             aria-describedby="dateHelpInline"
             required
@@ -57,17 +59,17 @@
             aria-label=".form-select-lg example"
             required
           >
-            <option>請選擇類別</option>
+            <option {{#if record}} {{else}} selected {{/if}}>請選擇類別</option>
             <option value="" disabled>===支出===</option>
             {{#each categories}}
               {{#if this.isExpense}}
-                <option value="{{this.name}}">{{this.name}}</option>
+                <option {{#compareObjectID this ../record}} selected {{/compareObjectID}} value="{{this.name}}">{{this.name}}</option>
               {{/if}}
             {{/each}}
             <option value="" disabled>===收入===</option>
             {{#each categories}}
               {{#if this.isExpense}}{{else}}
-                <option value="{{this.name}}">{{this.name}}</option>
+                <option {{#compareObjectID this ../record}} selected {{/compareObjectID}} value="{{this.name}}">{{this.name}}</option>
               {{/if}}
             {{/each}}
           </select>
@@ -89,6 +91,7 @@
               min="1"
               name="amount"
               id="amount"
+              value="{{record.amount}}"
               class="form-control form-control-lg"
               aria-describedby="amountHelpInline"
               required
@@ -97,7 +100,7 @@
         </div>
       </div>
       <div class="d-grid gap-2 mx-auto mt-5">
-        <button type="submit" class="btn">新增支出</button>
+        <button type="submit" class="btn">修改支出</button>
       </div>
     </div>
   </form>

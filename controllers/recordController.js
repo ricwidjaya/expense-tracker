@@ -21,13 +21,21 @@ module.exports = {
     })
   },
 
-  // New record page
+  // Get record page
   record: (req, res) => {
     const id = req.params.id
     const queries = [Record.findById(id).lean(), Category.find().lean()]
 
     return Promise.all(queries).then(([record, categories]) => {
-      return res.render("new", {
+      // New record
+      if (!id) {
+        return res.render("new", {
+          categories,
+          style: "record"
+        })
+      }
+      // Edit record
+      return res.render("edit", {
         record,
         categories,
         style: "record"
@@ -36,5 +44,10 @@ module.exports = {
   },
 
   // Add new record
-  postRecord: (req, res) => {}
+  postRecord: (req, res) => {
+    const { name, date, amount, receipt, category } = req.body
+    console.log(name, date, amount, receipt, category)
+  },
+
+  // Edit record
 }
