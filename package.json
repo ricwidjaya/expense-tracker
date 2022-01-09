@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ricwidjaya/expense-tracker#readme",
   "dependencies": {
+    "axios": "^0.24.0",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "dotenv": "^10.0.0",
