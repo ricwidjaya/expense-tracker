@@ -4,9 +4,18 @@
     aria-label=".form-select-lg example"
   >
     <option selected>類別</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
+    <option value="" disabled>===支出===</option>
+    {{#each categories}}
+      {{#if this.isExpense}}
+        <option value="{{this.name}}">{{this.name}}</option>
+      {{/if}}
+    {{/each}}
+    <option value="" disabled>===收入===</option>
+    {{#each categories}}
+      {{#if this.isExpense}}{{else}}
+        <option value="{{this.name}}">{{this.name}}</option>
+      {{/if}}
+    {{/each}}
   </select>
 
   {{!Total amount}}
@@ -20,25 +29,34 @@
   {{! AJAX list panel }}
   <div class="list-container">
     <ul class="list-group">
-      <li
-        class="list-group-item d-flex justify-content-between align-items-center mb-3"
-      >
+      {{#each records}}
+        <li
+          class="list-group-item d-flex justify-content-between align-items-center mb-3"
+        >
 
-        <div class="d-flex align-items-center list-head">
-          <i class="fas fa-home icon" style="user-select: auto;"></i>
-          <div class="ms-2 me-auto">
-            <div class="fw-bold">Name</div>
-            Date
+          <div class="d-flex align-items-center list-head">
+            <i class="fas fa-home icon" style="user-select: auto;"></i>
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">{{this.name}}</div>
+              {{this.date}}
+            </div>
           </div>
-        </div>
-        <div class="balance">
-          $300 元
-        </div>
-        <div class="icon">
-          <a href="#" class="me-3"><i class="fas fa-edit"></i></a>
-          <a href="#"><i class="fas fa-trash-alt"></i></a>
-        </div>
-      </li>
+          <div class="balance">
+            ${{this.amount}}
+            元
+          </div>
+          <div class="icon d-flex">
+            <a href="/record/{{this._id}}/edit" class="me-3"><i
+                class="fas fa-edit"
+              ></i></a>
+            <form action="/record/{{this._id}}?_method=DELETE" method="POST">
+              <button type="submit" class="btn"><i
+                  class="fas fa-trash-alt"
+                ></i></button>
+            </form>
+          </div>
+        </li>
+      {{/each}}
 
       <li
         class="list-group-item d-flex justify-content-between align-items-center mb-3"
@@ -82,6 +100,6 @@
   </div>
 
   <div class="d-grid gap-2 col-6 mx-auto">
-    <a href="/record/new" class="btn">New</a>
+    <a href="/record/new" class="btn">新增記帳</a>
   </div>
 </div>
