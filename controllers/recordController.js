@@ -24,7 +24,7 @@ module.exports = {
   },
 
   // Get record page
-  record: (req, res) => {
+  recordPage: (req, res) => {
     const id = req.params.id
     const queries = [Record.findById(id).lean(), Category.find().lean()]
 
@@ -88,5 +88,20 @@ module.exports = {
         return res.redirect("/")
       })
       .catch((error) => console.log(error))
+  },
+
+  // New category
+  categoryPage: (req, res) => {
+    return res.render("newCategory", {
+      style: "record"
+    })
+  },
+
+  // Create new category
+  postCategory: (req, res) => {
+    const category = req.body
+    return Category.create(category).then(() => {
+      return res.redirect("/")
+    })
   }
 }

@@ -27,3 +27,18 @@ small {
 .d-grid {
   max-width: 380px;
 }
+
+.form-check-input:checked {
+  background-color: #fc4445;
+  border-color: #fc4445;
+}
+
+.form-check-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.icon {
+  font-size: x-large;
+  color: #4056a1;
+}

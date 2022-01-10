@@ -1,0 +1,171 @@
+<div class="container mt-5 mx-auto">
+  <form action="/category" method="POST">
+    <h1 class="text-center">請輸入類別資訊</h1>
+    <small>必填欄位<span class="asterisk mx-2">*</span></small>
+    <div class="row g-3 align-items-center">
+
+      {{! Name }}
+      <div class="row g-3 align-items-center justify-content-evenly mb-3">
+        <div class="col-2">
+          <label for="name" class="col-form-label-lg">名稱<span
+              class="asterisk mx-2"
+            >*</span>:</label>
+        </div>
+        <div class="col-8">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="form-control form-control-lg"
+            aria-describedby="nameHelpInline"
+            required
+          />
+        </div>
+      </div>
+
+      {{! isExpense }}
+      <div class="row g-3 align-items-center justify-content-evenly mb-3">
+        <div class="col-2">
+          <label for="name" class="col-form-label-lg">收支<span
+              class="asterisk mx-2"
+            >*</span>:</label>
+        </div>
+        <div class="col-8">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="isExpense"
+              id="flexRadioDefault1"
+              value="true"
+              checked
+            />
+            <label class="form-check-label" for="flexRadioDefault1">
+              支出
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="isExpense"
+              id="flexRadioDefault2"
+              value="false"
+            />
+            <label class="form-check-label" for="flexRadioDefault2">
+              收入
+            </label>
+          </div>
+        </div>
+      </div>
+
+      {{! Icons }}
+      <div class="row g-3 align-items-center justify-content-evenly mb-3">
+        <div class="col-2">
+          <label for="name" class="col-form-label-lg">圖示<span
+              class="asterisk mx-2"
+            >*</span>:</label>
+        </div>
+        <div class="col-8">
+
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="inlineRadio1"
+              name="icon"
+              value="fas fa-air-freshener"
+            />
+            <label class="form-check-label" for="inlineRadio1"><i
+                class="fas fa-air-freshener"
+                style="user-select: auto;"
+              ></i></label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="inlineRadio2"
+              name="icon"
+              value="fas fa-ambulance"
+            />
+            <label class="form-check-label" for="inlineRadio2"><i
+                class="fas fa-ambulance"
+              ></i></label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="inlineRadio3"
+              name="icon"
+              value="fas fa-apple-alt"
+            />
+            <label class="form-check-label" for="inlineRadio3"><i
+                class="fas fa-apple-alt"
+              ></i></label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="inlineRadio4"
+              name="icon"
+              value="fas fa-baby"
+            />
+            <label class="form-check-label" for="inlineRadio4"><i
+                class="fas fa-baby"
+              ></i></label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="inlineRadio5"
+              name="icon"
+              value="fas fa-beer"
+            />
+            <label class="form-check-label" for="inlineRadio5"><i
+                class="fas fa-beer"
+              ></i></label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="inlineRadio6"
+              name="icon"
+              value="fas fa-biking"
+            />
+            <label class="form-check-label" for="inlineRadio6"><i
+                class="fas fa-biking"
+              ></i></label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="inlineRadio7"
+              name="icon"
+              value="fas fa-book-open"
+            />
+            <label class="form-check-label" for="inlineRadio7"><i
+                class="fas fa-book-open"
+                style="user-select: auto;"
+              ></i></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-grid gap-2 mx-auto mt-5">
+        <button type="submit" class="btn">新增類別</button>
+      </div>
+    </div>
+  </form>
+</div>

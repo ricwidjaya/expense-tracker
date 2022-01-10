@@ -34,10 +34,20 @@
         </a>
 
         {{#if user}}
-          <a href="/users/logout"><button
-              type="button"
-              class="btn nav-btn"
-            >Logout</button></a>
+          <div class="d-flex gap-3">
+            <a href="/category/new"><button
+                type="button"
+                class="btn nav-btn"
+              >新增類別</button></a>
+            <a href="/record/new"><button
+                type="button"
+                class="btn nav-btn"
+              >新增記帳</button></a>
+            <a href="/users/logout"><button
+                type="button"
+                class="btn nav-btn"
+              >Logout</button></a>
+          </div>
         {{else}}
           <a href="/users/signup"><button type="button" class="btn nav-btn">Sign
               up</button></a>
