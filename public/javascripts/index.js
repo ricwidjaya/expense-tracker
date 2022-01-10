@@ -32,7 +32,7 @@ function renderLists(data) {
 
           <div class="d-flex align-items-center list-head">
             <i
-              class="${record.icon} icon"
+              class="${record.categoryId.icon} icon"
               style="user-select: auto;"
             ></i>
             <div class="ms-2 me-auto">
