@@ -6,11 +6,6 @@ const Category = new Schema({
     type: String,
     required: true
   },
-  isExpense: {
-    type: Boolean,
-    default: false,
-    required: true
-  },
   icon: {
     type: String,
     default: "fas fa-pen"

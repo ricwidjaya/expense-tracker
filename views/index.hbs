@@ -3,18 +3,10 @@
     class="form-select form-select-lg mt-5 mb-3"
   >
     <option value="" selected>全類別</option>
-    <option value="" disabled>===支出===</option>
     {{#each categories}}
-      {{#if this.isExpense}}
         <option value="{{this._id}}">{{this.name}}</option>
-      {{/if}}
     {{/each}}
-    <option value="" disabled>===收入===</option>
-    {{#each categories}}
-      {{#if this.isExpense}}{{else}}
-        <option value="{{this._id}}">{{this.name}}</option>
-      {{/if}}
-    {{/each}}
+    
   </select>
 
   {{!Total amount}}
@@ -44,6 +36,31 @@
               {{formatDate this.date}}
             </div>
           </div>
+          
+{{!-- Receipt Modal --}}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{this.name}}Modal">
+  收據
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="{{this.name}}Modal" tabindex="-1" aria-labelledby="{{this.name}}ModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="{{this.name}}ModalLabel">收據</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="{{this.receipt}}" alt="" width="300px" height="auto">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
           <div class="balance">
             ${{formatCurrency this.amount}}
             元

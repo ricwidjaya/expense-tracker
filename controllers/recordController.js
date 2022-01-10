@@ -1,3 +1,4 @@
+const imgur = require("imgur-node-api")
 const Category = require("../models/category")
 const Record = require("../models/record")
 
@@ -25,12 +26,16 @@ module.exports = {
 
   // Get record page
   recordPage: (req, res) => {
-    const id = req.params.id
-    const queries = [Record.findById(id).lean(), Category.find().lean()]
+    const _id = req.params.id
+    const userId = req.user._id
+    const queries = [
+      Record.findOne({ _id, userId }).lean(),
+      Category.find().lean()
+    ]
 
     return Promise.all(queries).then(([record, categories]) => {
       // New record
-      if (!id) {
+      if (!_id) {
         return res.render("new", {
           categories,
           style: "record"
@@ -48,35 +53,71 @@ module.exports = {
   // Add new record
   postRecord: (req, res) => {
     const { name, date, amount, receipt, categoryId } = req.body
+    const { file } = req
 
-    Record.create({
-      name,
-      date,
-      amount,
-      userId: req.user._id,
-      categoryId
-    }).then(() => {
-      return res.redirect("/")
-    })
+    if (file) {
+      imgur.setClientID(process.env.IMGUR_CLIENT_ID)
+      imgur.upload(file.path, (err, img) => {
+        return Record.create({
+          name,
+          date,
+          amount,
+          receipt: img.data.link,
+          userId: req.user._id,
+          categoryId
+        }).then(() => {
+          return res.redirect("/")
+        })
+      })
+    } else {
+      Record.create({
+        name,
+        date,
+        amount,
+        userId: req.user._id,
+        categoryId
+      }).then(() => {
+        return res.redirect("/")
+      })
+    }
   },
 
   // Edit record
   putRecord: (req, res) => {
     const _id = req.params.id
     const userId = req.user._id
-    const { name, date, amount, receipt, categoryId } = req.body
+    const { name, date, amount, categoryId } = req.body
+    const { file } = req
 
-    Record.findOneAndUpdate(
-      { _id, userId },
-      {
-        name,
-        date,
-        amount,
-        categoryId
-      }
-    ).then(() => {
-      return res.redirect("/")
-    })
+    if (file) {
+      imgur.setClientID(process.env.IMGUR_CLIENT_ID)
+      imgur.upload(file.path, (err, img) => {
+        return Record.findOneAndUpdate(
+          { _id, userId },
+          {
+            name,
+            date,
+            amount,
+            receipt: img.data.link,
+            categoryId
+          }
+        ).then(() => {
+          return res.redirect("/")
+        })
+      })
+    } else {
+      Record.findOneAndUpdate(
+        { _id, userId },
+        {
+          name,
+          date,
+          amount,
+          categoryId
+        }
+      ).then(() => {
+        return res.redirect("/")
+      })
+    }
   },
 
   // Delete record

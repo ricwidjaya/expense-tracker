@@ -1,5 +1,5 @@
 <div class="container mt-5 mx-auto">
-  <form action="/record" method="POST">
+  <form action="/record" method="POST" enctype="multipart/form-data">
     <h1 class="text-center">請輸入記帳資訊</h1>
     <small>必填欄位<span class="asterisk mx-2">*</span></small>
     <div class="row g-3 align-items-center">
@@ -57,20 +57,27 @@
             aria-label=".form-select-lg example"
             required
           >
-            <option>請選擇類別</option>
-            <option value="" disabled>===支出===</option>
+            <option disabled selected>請選擇類別</option>
             {{#each categories}}
-              {{#if this.isExpense}}
-                <option value="{{this._id}}">{{this.name}}</option>
-              {{/if}}
-            {{/each}}
-            <option value="" disabled>===收入===</option>
-            {{#each categories}}
-              {{#if this.isExpense}}{{else}}
-                <option value="{{this._id}}">{{this.name}}</option>
-              {{/if}}
+              <option value="{{this._id}}">{{this.name}}</option>
             {{/each}}
           </select>
+        </div>
+      </div>
+
+      {{! Receipt }}
+      <div class="row g-3 align-items-center justify-content-evenly mb-3">
+        <div class="col-2">
+          <label for="receipt" class="col-form-label-lg">收據 :</label>
+        </div>
+        <div class="col-8">
+          <input
+            type="file"
+            name="image"
+            id="receipt"
+            class="form-control form-control-lg"
+            aria-describedby="nameHelpInline"
+          />
         </div>
       </div>
 

@@ -2,6 +2,14 @@ const select = document.querySelector(".form-select")
 const listGroup = document.querySelector(".list-group")
 const amount = document.querySelector(".amount")
 
+// Bootstrap popovers
+const popoverTriggerList = [].slice.call(
+  document.querySelectorAll('[data-bs-toggle="popover"]')
+)
+const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})
+
 select.addEventListener("change", (event) => {
   const categoryId = event.target.value
   const PATH = `/api/record/category/?categoryId=${categoryId}`
