@@ -2,8 +2,9 @@
 
 ## _Track daily expenses with category and receipt_
 
-<img width="1411" alt="Screen Shot 2022-01-10 at 17 32 43" src="https://user-images.githubusercontent.com/43133690/148745626-d419f4d9-3e53-49f4-8b0f-a12bd233b991.png">
-<img width="1420" alt="Screen Shot 2022-01-10 at 17 31 16" src="https://user-images.githubusercontent.com/43133690/148745648-456de8c2-c2a3-4080-a888-4bc20a29731a.png">
+<img width="1400" alt="Screen Shot 2022-01-13 at 17 07 20" src="https://user-images.githubusercontent.com/43133690/149299776-5af65ec4-c32a-421e-9f72-9b13ecc5488d.png">
+<img width="1411" alt="Screen Shot 2022-01-13 at 17 07 02" src="https://user-images.githubusercontent.com/43133690/149299781-5449e8d2-e2f7-4635-8a14-6df8dd0100a2.png">
+
 
 
 "廣志の私帳 Expense Tracker" is a web app built with Express.js and Node.js with MongoDB that allows you to track expense information.
