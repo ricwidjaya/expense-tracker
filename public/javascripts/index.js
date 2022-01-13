@@ -74,12 +74,12 @@ function renderLists(data) {
             $${record.formatAmount}
             元
           </div>
-          <div class="icon d-flex">
-            <a href="/record/${record._id}/edit" class="me-3"><i
+          <div class="d-flex align-items-center">
+            <a href="/record/${record._id}/edit" class="edit-btn me-3"><i
                 class="fas fa-edit"
               ></i></a>
             <form action="/record/${record._id}?_method=DELETE" method="POST">
-              <button type="submit" class="btn align-self-center"><i
+              <button type="submit" class="btn delete-btn"><i
                   class="fas fa-trash-alt"
                 ></i></button>
             </form>

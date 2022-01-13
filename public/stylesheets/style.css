@@ -12,13 +12,19 @@ nav {
 }
 
 .btn {
-  background-color: #fc4445;
+  background-color: rgba(0, 87, 146, 1);
   color: #fff;
   border: none;
 }
 
+.nav-btn {
+  background-color: #fff;
+  color: rgba(0, 87, 146, 1);
+  border: 1px solid rgba(0, 87, 146, 1);
+}
+
 .fa-receipt {
-  color: #fc4445;
+  color: rgba(0, 87, 146, 1);
 }
 
 .alert {

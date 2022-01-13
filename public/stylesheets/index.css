@@ -11,10 +11,9 @@
   gap: 2rem;
 }
 
-/* Scrollable list view */
-.list-container {
-  height: 50vh;
-  overflow-y: scroll;
+.fas {
+  width: 20px;
+  font-size: large;
 }
 
 .list-group {
@@ -28,14 +27,35 @@
 }
 
 .list-head {
+  width: 25%;
   gap: 1rem;
+}
+
+.receipt-btn {
+  width: 25%;
+}
+
+.list-end {
+  width: 40%;
 }
 
 .balance {
   font-size: 18px;
 }
 
-.icon {
-  font-size: x-large;
-  color: #4056a1;
+.edit-btn {
+  font-size: large;
+  background-color: #fff;
+  color: rgba(0, 87, 146, 1);
+  border: none;
+}
+
+form {
+  margin: 0;
+}
+
+.delete-btn {
+  background-color: #fff;
+  color: #fc4445;
+  border: none;
 }

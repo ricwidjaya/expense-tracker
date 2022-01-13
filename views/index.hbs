@@ -23,12 +23,12 @@
     <ul class="list-group">
       {{#each records}}
         <li
-          class="list-group-item d-flex justify-content-between align-items-center mb-3"
+          class="list-group-item d-flex justify-content-around align-items-center mb-3"
         >
 
-          <div class="d-flex align-items-center list-head">
+          <div class="d-flex justify-content-end list-head">
             <i
-              class="{{getIcon ../categories this}} icon"
+              class="{{getIcon ../categories this}} icon align-self-center "
               style="user-select: auto;"
             ></i>
             <div class="ms-2 me-auto">
@@ -37,48 +37,50 @@
             </div>
           </div>
           
-{{!-- Receipt Modal --}}
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{this.name}}Modal">
-  收據
-</button>
+          {{!-- Receipt Modal --}}
+          <div class="receipt">          
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{this.name}}Modal">
+            收據
+          </button>
 
-<div class="modal fade" id="{{this.name}}Modal" tabindex="-1" aria-labelledby="{{this.name}}ModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="{{this.name}}ModalLabel">收據</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <img src="{{this.receipt}}" alt="" width="300px" height="auto">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-          <div class="balance">
-            ${{formatCurrency this.amount}}
-            元
+          <div class="modal fade" id="{{this.name}}Modal" tabindex="-1" aria-labelledby="{{this.name}}ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="{{this.name}}ModalLabel">收據</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <img src="{{this.receipt}}" alt="" width="300px" height="auto">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="icon d-flex">
-            <a href="/record/{{this._id}}/edit" class="me-3"><i
-                class="fas fa-edit"
-              ></i></a>
-            <form action="/record/{{this._id}}?_method=DELETE" method="POST">
-              <button type="submit" class="btn align-self-center"><i
-                  class="fas fa-trash-alt"
-                ></i></button>
-            </form>
+          </div>
+          <div class="d-flex justify-content-between align-items-center list-end">
+            <div class="balance">
+              ${{formatCurrency this.amount}}
+              元
+            </div>
+            <div class="d-flex align-items-center">
+              
+              <a href="/record/{{this._id}}/edit" class="edit-btn me-3"><i
+                  class="fas fa-edit"
+                ></i></a>
+              
+              <form action="/record/{{this._id}}?_method=DELETE" method="POST">
+                <button type="submit" class="btn delete-btn"><i
+                    class="fas fa-trash-alt"
+                  ></i></button>
+              
+              </form>
+            </div>
           </div>
         </li>
       {{/each}}
     </ul>
-  </div>
-
-  <div class="d-grid gap-2 col-6 mx-auto mt-3">
-    <a href="/record/new" class="btn">新增記帳</a>
-  </div>
+  </div>  
 </div>
